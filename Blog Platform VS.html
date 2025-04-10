@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Blog Platform</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 40px;
+      background-color: #f2f2f2;
+    }
+    h1, h2 {
+      color: #333;
+    }
+    input, textarea {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      font-size: 16px;
+      box-sizing: border-box;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #28a745;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    .post {
+      background-color: white;
+      padding: 15px;
+      margin-top: 20px;
+      border-left: 4px solid #007BFF;
+    }
+    .post h3 {
+      margin: 0 0 5px 0;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Blog Platform (Frontend Only)</h1>
+
+  <div>
+    <input type="text" id="title" placeholder="Enter blog title" />
+    <textarea id="content" rows="5" placeholder="Write your blog content..."></textarea>
+    <button onclick="addPost()">Post</button>
+  </div>
+
+  <h2>Recent Posts</h2>
+  <div id="posts"></div>
+
+  <script>
+    function addPost() {
+      const title = document.getElementById("title").value.trim();
+      const content = document.getElementById("content").value.trim();
+
+      if (!title || !content) {
+        alert("Please enter both title and content.");
+        return;
+      }
+
+      const postContainer = document.createElement("div");
+      postContainer.className = "post";
+
+      const postTitle = document.createElement("h3");
+      postTitle.textContent = title;
+
+      const postContent = document.createElement("p");
+      postContent.textContent = content;
+
+      postContainer.appendChild(postTitle);
+      postContainer.appendChild(postContent);
+
+      document.getElementById("posts").prepend(postContainer);
+
+      document.getElementById("title").value = "";
+      document.getElementById("content").value = "";
+    }
+  </script>
+
+</body>
+</html>
